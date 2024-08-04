@@ -87,7 +87,7 @@ class DataPreprocessor:
 
             return rearranged_sentence
         
-        model_name = r"blog\static\blog\model\TrainedModel" #Traiend model path
+        model_name = "blog/static/blog/model/TrainedModel" #Traiend model path
         tokenizer = GPT2Tokenizer.from_pretrained(model_name)
         model = GPT2LMHeadModel.from_pretrained(model_name)
         tokenizer.pad_token_id = tokenizer.eos_token_id
