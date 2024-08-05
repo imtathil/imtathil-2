@@ -115,8 +115,8 @@ class DataPreprocessor:
 
                 #post-process
                 generated_text = generated_text.strip()
-                generated_text = re.sub(r'\s+', ' ', generated_text)
-                generated_text = re.sub(r'[^\w\s]', '', generated_text)
+                generated_text = re.sub('/s+', ' ', generated_text)
+                generated_text = re.sub('[^/w/s]', '', generated_text)
                 generated_texts.append(generated_text)
 
             return generated_texts
@@ -223,7 +223,7 @@ class DataPreprocessor:
         
         ## Code To generate نسبة مستوى الالتزام الضوابط في أداة الهيئة as a pdf ##
         # Register the custom font file
-        pdfmetrics.registerFont(TTFont('ArabicFont', r"blog\static\blog\Fonts\Font.ttf"))  # Replace 'path_to_your_arabic_font.ttf' with the actual file path
+        pdfmetrics.registerFont(TTFont('ArabicFont', "blog/static/blog/Fonts/Font.ttf"))  # Replace 'path_to_your_arabic_font.ttf' with the actual file path
 
         # Create a PDF document
         doc = SimpleDocTemplate("compliance_Stats.pdf", pagesize=letter)
@@ -319,7 +319,7 @@ class DataPreprocessor:
 
         def generate_pdf_with_table(data):
             pdf = FPDF(orientation='L')  # Set orientation to landscape
-            pdf.add_font("Arial", style="", fname=r"blog\static\blog\Fonts\Font.ttf", uni=True) #the path of the font used
+            pdf.add_font("Arial", style="", fname="blog/static/blog/Fonts/Font.ttf", uni=True) #the path of the font used
             pdf.add_page()
             pdf.set_font("Arial", size=10)
             col_widths = [pdf.get_string_width(arabic_text(header)) + 6 for header in data.columns]
@@ -688,9 +688,9 @@ class DataPreprocessor:
         # Example usage
         title = get_display(arabic_reshaper.reshape("هذا التقرير تم إنشاؤه باستخدام أداة إمتثل"))
         text = get_display(arabic_reshaper.reshape("هذا تقرير تم إنشاؤه لأداة إمتثل"))
-        image_path1 = r"blog\static\blog\images\ImtathilPDF.jpg"
-        image_path2 = r"blog\static\blog\images\back.jpg"
-        font_path = r"blog\static\blog\Fonts\Font.ttf"
+        image_path1 = "blog/static/blog/images/ImtathilPDF.jpg"
+        image_path2 = "blog/static/blog/images/back.jpg"
+        font_path = "blog/static/blog/Fonts/Font.ttf"
         output_file = "Cover_Page.pdf"
 
         create_pdf(title, text, image_path1, image_path2, output_file, font_path)
